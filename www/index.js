@@ -1,6 +1,4 @@
-import { Frame } from "raytracerwasm"; 
-import * as wasm from "raytracerwasm";
-import { memory } from "raytracerwasm/raytracerwasm_bg";
+import init, { Frame } from "raytracerwasm";
 
 // const width = window.innerWidth;
 // const height = window.innerHeight;
@@ -11,11 +9,12 @@ canvas.height = height;
 canvas.width = width;
 const ctx = canvas.getContext('2d');
 
-window.onload = () => {
-    render();
+window.onload = async () => {
+    const { memory } = await init();
+    render(memory);
 }
 
-function render() {
+function render(memory) {
     const frame = Frame.create(width,height)
     const dataPtr = frame.data();
     const arr = new Uint8Array(memory.buffer, dataPtr, width * 3 * height);
