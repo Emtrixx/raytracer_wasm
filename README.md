@@ -29,3 +29,15 @@ Web files are in the `www` directory. To run the web server, you run the "start"
  wasm-pack build --target web
  wasm-pack serve
 ````
+
+
+# Build web server
+
+```bash
+ cd www
+ npm run build
+```
+
+# Copy js files
+
+Copy js and wasm files in `www/dist` to homepage raytracer dir. Insert html content into ejs template.
